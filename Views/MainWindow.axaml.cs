@@ -1,21 +1,21 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Papply.Storage;
 using Papply.Views.TP;
 
 namespace Papply.Views;
 
 public partial class MainWindow : Window
 {
+
     public MainWindow()
     {
         InitializeComponent();
     }
-
-    private void Window_Loaded(object sender, RoutedEventArgs e)
+    private void btn_dashboard_Click(object sender, RoutedEventArgs e)
     {
-        MainContent.Content = new CreateTP();
+        ChangeContent(new DashBoard());
     }
-
     private void ChangeContent(UserControl newContent)
     {
         MainContent.Content = newContent;
@@ -30,5 +30,4 @@ public partial class MainWindow : Window
     {
         ChangeContent(new GestionTp());
     }
-
 }
