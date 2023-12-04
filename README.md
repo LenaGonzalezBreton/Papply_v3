@@ -43,3 +43,38 @@ Papply will be a software usable by our Teacher to check our practical work and 
 | Text2 Color | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
 
 
+
+## Comment taffer à plusieurs
+Après le pull de ce travail (depuis un cmd à l'emplacement voulu : 'git clone https://github.com/LenaGonzalezBreton/Papply_v3.git') il est indispensable de travailler sur une branche à repérable.
+
+Vous pouver la créer depuis votre terminal sur votre IDE : 'git branch nomdelabranche'
+
+_Gardez la même nomenclature_ : nom-fonctionnalité-précision
+
+Exemple: lena-dashboard-récapitulatif
+
+Vérifiez que vous êtes sur cette branche avec la commande : git branch (vous devriez voir une étoile à coté du nom de la branche sur laquelle vous travaillez). Si vous n'êtes pas sur la bonne branche entrez la commande : git switch nomdelabranche.
+### Une fois que vous considérez avoir terminé votre tâche
+#### Si votre gitignore fonctionne pour le bin :
+Entrez ces commandes :
+
+'git add .' (ajoutera toutes les modification dans un fichier temporaire)
+
+'git commit -m "Commentaires et précision sur votre travail"' (préparera le fichier à envoyer en lui donnant une description)
+
+'git push origin nomdelabranche' (envoi de vos modification depuis la source (origin) à la destination (nomdelabranche))
+
+#### Si votre gitignore ne fonctionne pas pour le bin :
+
+Fermez votre IDE et rendez vous manuellement dans les fichiers de votre projet et supprimez le dossier bin
+
+Entrez ces commandes :
+
+'git add .' (ajoutera toutes les modification dans un fichier temporaire)
+
+'git commit -m "Commentaires et précision sur votre travail"' (préparera le fichier à envoyer en lui donnant une description)
+
+'git push origin nomdelabranche' (envoi de vos modification depuis la source (origin) à la destination (nomdelabranche))
+
+Pour ce qui est des merges des différentes branches, je gère.
+
