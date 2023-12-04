@@ -9,11 +9,13 @@ namespace Papply.Storage
 {
     public class BDDInteraction
     {
-        public SqlConnection bdo = new SqlConnection("Data Source=172.20.11.32;Initial Catalog=Papply;Integrated Security=SSPI");
+        public SqlConnection bdo = new SqlConnection("Data Source=172.20.11.32;Initial Catalog=Papply;User ID = dev; Password=dev3;Encrypt=true; TrustServerCertificate=true;");
+
         public BDDInteraction() { }
     
-        public void ExtractStudent()
+        public static void ExtractStudent(SqlConnection bdo)
         {
+            bdo.Open();
             SqlCommand extraction = bdo.CreateCommand();
             extraction.CommandText = "SELECT * FROM STUDENT";
             extraction.ExecuteNonQuery();
@@ -34,10 +36,12 @@ namespace Papply.Storage
                     DataStorage.Students.AddOrUpdate(stoadd);
                 }
             }
+            bdo.Close();
         }
 
-        public void ExtractPromo()
+        public static void ExtractPromo(SqlConnection bdo)
         {
+            bdo.Open();
             SqlCommand extraction = bdo.CreateCommand();
             List<Student> students = new List<Student>();
             extraction.CommandText = "SELECT * FROM PROMOTION";
@@ -70,10 +74,13 @@ namespace Papply.Storage
                     DataStorage.Promotions.AddOrUpdate(ptoadd);
                 }
             }
+            bdo.Close();
         }
 
-        public void ExtractTask()
+        public static void ExtractTask(SqlConnection bdo)
         {
+            bdo.Open();
+
             SqlCommand extraction = bdo.CreateCommand();
             extraction.CommandText = "SELECT * FROM TASK";
             extraction.ExecuteNonQuery();
@@ -95,10 +102,12 @@ namespace Papply.Storage
                     DataStorage.Tasks.AddOrUpdate(ttoadd);
                 }
             }
+            bdo.Close();
         }
 
-        public void ExtractTp()
+        public static void ExtractTp(SqlConnection bdo)
         {
+            bdo.Open();
             SqlCommand extraction = bdo.CreateCommand();
             extraction.CommandText = "SELECT * FROM TP";
             extraction.ExecuteNonQuery();
@@ -119,10 +128,13 @@ namespace Papply.Storage
                     DataStorage.Tps.AddOrUpdate(tptoadd);
                 }
             }
+            bdo.Close();
         }
 
-        public void InsertAllStudents(List<Student> students)
+        public static void InsertAllStudents(List<Student> students, SqlConnection bdo)
         {
+            bdo.Open();
+
             using (SqlCommand insertion = bdo.CreateCommand())
             {
                 insertion.CommandText = "INSERT INTO STUDENT (IdStudent, Nom, Prenom, IdPromotion) VALUES (@IdStudent, @Nom, @Prenom, @IdPromotion)";
@@ -137,10 +149,12 @@ namespace Papply.Storage
                     insertion.ExecuteNonQuery();
                 }
             }
+            bdo.Close();
         }
 
-        public void InsertAllPromotions(List<Promotion> promotions)
+        public static void InsertAllPromotions(List<Promotion> promotions, SqlConnection bdo)
         {
+            bdo.Open();
             using (SqlCommand insertion = bdo.CreateCommand())
             {
                 insertion.CommandText = "INSERT INTO PROMOTION (IdPromotion, NomPromotion) VALUES (@IdPromotion, @NomPromotion)";
@@ -153,10 +167,12 @@ namespace Papply.Storage
                     insertion.ExecuteNonQuery();
                 }
             }
+            bdo.Close();
         }
 
-        public void InsertAllTasks(List<Task> tasks)
+        public static void InsertAllTasks(List<Task> tasks, SqlConnection bdo)
         {
+            bdo.Open();
             using (SqlCommand insertion = bdo.CreateCommand())
             {
                 insertion.CommandText = "INSERT INTO TASK (IdTask, PointTask, TitleTask, DescriptionTask, IdTp) VALUES (@IdTask, @PointTask, @TitleTask, @DescriptionTask, @IdTp)";
@@ -172,10 +188,12 @@ namespace Papply.Storage
                     insertion.ExecuteNonQuery();
                 }
             }
+            bdo.Close();
         }
 
-        public void InsertAllTps(List<Tp> tps)
+        public static void InsertAllTps(List<Tp> tps, SqlConnection bdo)
         {
+            bdo.Open();
             using (SqlCommand insertion = bdo.CreateCommand())
             {
                 insertion.CommandText = "INSERT INTO TP (IdTp, TitreTp, DescriptionTp) VALUES (@IdTp, @TitreTp, @DescriptionTp)";
@@ -189,9 +207,15 @@ namespace Papply.Storage
                     insertion.ExecuteNonQuery();
                 }
             }
+            bdo.Close();
         }
 
-
-
+        public static void StartExtract(SqlConnection bdo)
+        {
+            ExtractStudent(bdo);
+            ExtractPromo(bdo);
+            ExtractTp(bdo);
+            ExtractTask(bdo);
+        }
     }
 }

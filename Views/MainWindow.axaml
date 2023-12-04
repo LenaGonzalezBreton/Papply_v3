@@ -10,7 +10,6 @@
         Title="Papply"
 		WindowStartupLocation="CenterScreen"
 		WindowState="Maximized"
-		Loaded="Window_Loaded"
 		>
 
     <Design.DataContext>
