@@ -77,3 +77,5 @@ Entrez ces commandes :
 'git push origin nomdelabranche' (envoi de vos modification depuis la source (origin) à la destination (nomdelabranche))
 
 Pour ce qui est des merges des différentes branches, je gère.
+
+Interdiction de push sur master
