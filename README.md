@@ -78,4 +78,4 @@ Entrez ces commandes :
 
 Pour ce qui est des merges des différentes branches, je gère.
 
-Interdiction de push sur master
+## Interdiction de push sur master
